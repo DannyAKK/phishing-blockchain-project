@@ -1,0 +1,1 @@
+print("Phishing Assessment Prototype")
