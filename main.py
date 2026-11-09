@@ -1,13 +1,25 @@
+from input_validation import parse_input
+
+
 def main():
     print("Phishing Assessment Prototype")
-    supplied_input = input("Enter a URL or domain: ").strip()
-
-    if not supplied_input:
-        print("No input provided. Please enter a URL or domain.")
+    try:
+        supplied_input = input("Enter a URL or domain: ")
+    except (EOFError, KeyboardInterrupt):
+        print("\nInput cancelled. Exiting.")
         return
 
-    print(f"Input received: {supplied_input}")
-    print("Input validation and phishing assessment are not implemented yet.")
+    try:
+        parsed_input = parse_input(supplied_input)
+    except ValueError as error:
+        print(error)
+        return
+
+    print("\nInput accepted.")
+    print(f"Input type: {parsed_input['input_type']}")
+    print(f"Hostname: {parsed_input['hostname']}")
+    print("\nThis confirms supported syntax only.")
+    print("Phishing assessment is not implemented yet.")
 
 
 if __name__ == "__main__":
