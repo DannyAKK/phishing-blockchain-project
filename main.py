@@ -1,4 +1,4 @@
-from input_validation import parse_input
+from assessment import prepare_assessment
 
 
 def main():
@@ -10,14 +10,14 @@ def main():
         return
 
     try:
-        parsed_input = parse_input(supplied_input)
+        assessment = prepare_assessment(supplied_input)
     except ValueError as error:
         print(error)
         return
 
     print("\nInput accepted.")
-    print(f"Input type: {parsed_input['input_type']}")
-    print(f"Hostname: {parsed_input['hostname']}")
+    print(f"Input type: {assessment.input_type}")
+    print(f"Hostname: {assessment.hostname}")
     print("\nThis confirms supported syntax only.")
     print("Phishing assessment is not implemented yet.")
 
